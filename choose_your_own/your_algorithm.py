@@ -29,6 +29,34 @@ plt.show()
 
 
 ### your code here!  name your classifier object clf if you want the 
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
+from sklearn import metrics
+
+clf_1 = KNeighborsClassifier(n_neighbors=5)
+clf_1.fit(features_train, labels_train)
+predictions_1 = clf_1.predict(features_test)
+
+clf_2 = RandomForestClassifier()
+clf_2.fit(features_train, labels_train)
+predictions_2 = clf_2.predict(features_test)
+
+clf_3 = AdaBoostClassifier()
+clf_3.fit(features_train, labels_train)
+predictions_3 = clf_3.predict(features_test)
+
+clf_4 = SVC(kernel='rbf', C=100000)
+clf_4.fit(features_train, labels_train)
+predictions_4 = clf_4.predict(features_test)
+
+print 'KNN score: %s' % metrics.accuracy_score(labels_test, predictions_1)
+print 'Random Forest score: %s' % metrics.accuracy_score(labels_test, predictions_2)
+print 'AdaBoost score: %s' % metrics.accuracy_score(labels_test, predictions_3)
+print 'Support Vector Machine score: %s' % metrics.accuracy_score(labels_test, predictions_4)
+
+clf = clf_4
+
 ### visualization code (prettyPicture) to show you the decision boundary
 
 
